@@ -9,9 +9,26 @@ dotenv.config();
 
 console.log(`Hello Node.js v${process.versions.node}!`);
 var http = require('http');
-app.use('/', (req, res) => {
-  console.log('hey this is /raj url');
+
+
+
+
+app.use(express.json());
+
+app.use(express.urlencoded({ extended: true }));
+  
+app.post('/profile', function (req, res) {
+  console.log(req.body);
+  res.send();
 });
+app.get('/',(req,res)=>{
+  console.log(' local server');
+  
+  res.send('<h1> hello</h1>')
+})
+
+
+
 
 console.log(process.env.MONGO_URL);
 
